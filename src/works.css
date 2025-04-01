@@ -1,0 +1,195 @@
+/* Works & Dance詳細ページのスタイル */
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --text-color: #333;
+  --background-color: #fff;
+  --card-bg: #fff;
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ページヘッダー */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-top: 5rem;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.page-header .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* グリッドレイアウト */
+.works-grid,
+.dance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* カードスタイル */
+.work-card,
+.dance-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover,
+.dance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.work-image,
+.dance-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-image img {
+  transform: scale(1.05);
+}
+
+.work-info,
+.dance-info {
+  padding: 1.5rem;
+}
+
+.work-info h3,
+.dance-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.work-info p,
+.dance-info p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.work-details,
+.dance-details {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.work-year,
+.dance-date,
+.work-tech,
+.dance-place {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #777;
+}
+
+.work-description,
+.dance-description {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.dance-role {
+  color: #555;
+  font-weight: 500;
+}
+
+/* ホームに戻るボタン */
+.back-to-home {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background: #1a2530;
+  transform: translateY(-2px);
+}
+
+.back-button i {
+  font-size: 0.9rem;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+  .works-grid,
+  .dance-grid {
+    padding: 0 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding-top: 4rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .works-grid,
+  .dance-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .work-info h3,
+  .dance-info h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header .subtitle {
+    font-size: 1rem;
+  }
+
+  .work-info,
+  .dance-info {
+    padding: 1.2rem;
+  }
+
+  .work-description,
+  .dance-description {
+    font-size: 0.9rem;
+  }
+}
