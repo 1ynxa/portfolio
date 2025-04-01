@@ -8,6 +8,18 @@
   --card-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
 }
 
+/* SPの時にはカーソルを表示しない */
+@media (max-width: 768px) {
+  body {
+    cursor: auto; /* スマホではデフォルトカーソルを使用 */
+  }
+
+  .cursor,
+  .cursor-follower {
+    display: none;
+  }
+}
+
 /* ページヘッダー */
 .page-header {
   text-align: center;
@@ -375,6 +387,34 @@
   .filter-container {
     flex-wrap: wrap;
   }
+
+  /* カードのサイズと余白を調整 */
+  .work-card,
+  .dance-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .work-image,
+  .dance-video {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .dance-video iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* モーダルの調整 */
+  .modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -388,11 +428,29 @@
 
   .work-info,
   .dance-info {
-    padding: 1.2rem;
+    padding: 1rem;
   }
 
   .work-description,
   .dance-description {
     font-size: 0.9rem;
+  }
+
+  /* 小さなスマホ向けの調整 */
+  .back-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-body h2 {
+    font-size: 1.5rem;
+  }
+
+  .dance-video {
+    margin-bottom: 1rem;
   }
 }

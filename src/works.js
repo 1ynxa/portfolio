@@ -1,5 +1,10 @@
 // カスタムカーソル
 function initCustomCursor() {
+  // スマホサイズの場合はカスタムカーソルを初期化しない
+  if (window.innerWidth <= 768) {
+    return;
+  }
+
   const cursor = document.createElement("div");
   cursor.classList.add("cursor");
   document.body.appendChild(cursor);
@@ -34,6 +39,23 @@ function initCustomCursor() {
       cursor.classList.remove("cursor-grow");
       cursorFollower.classList.remove("cursor-follower-grow");
     });
+  });
+
+  // ウィンドウリサイズ時にカーソルを更新
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 768) {
+      if (document.body.contains(cursor)) {
+        document.body.removeChild(cursor);
+      }
+      if (document.body.contains(cursorFollower)) {
+        document.body.removeChild(cursorFollower);
+      }
+    } else {
+      if (!document.body.contains(cursor)) {
+        document.body.appendChild(cursor);
+        document.body.appendChild(cursorFollower);
+      }
+    }
   });
 }
 

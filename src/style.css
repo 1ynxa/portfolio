@@ -24,6 +24,13 @@ body {
   overflow-x: hidden;
 }
 
+/* メディアクエリでSP時にはカーソルを通常に戻す */
+@media (max-width: 768px) {
+  body {
+    cursor: auto; /* スマホではデフォルトカーソルを使用 */
+  }
+}
+
 /* カスタムカーソル */
 .cursor {
   width: 20px;
@@ -54,6 +61,14 @@ body {
   opacity: 0.5;
   transform: translate(-50%, -50%);
   transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* SPの時にはカーソル非表示 */
+@media (max-width: 768px) {
+  .cursor,
+  .cursor-follower {
+    display: none;
+  }
 }
 
 .cursor-grow {
@@ -1265,17 +1280,20 @@ footer::before {
   .works-slider,
   .dance-slider {
     max-width: 600px;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
 
   .work-item,
   .dance-item {
     margin: 0 0.25rem;
+    /* SP表示時のカードをより大きく */
+    padding: 0.5rem;
+    max-width: 100%;
   }
 
   .work-info h3,
   .dance-info h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .work-details,
@@ -1286,6 +1304,19 @@ footer::before {
   .work-image,
   .dance-media {
     margin-bottom: 0.75rem;
+    /* アスペクト比を維持しつつ、より大きく表示 */
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
+
+  /* スライダーの中央表示を強化 */
+  .slick-slide {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+
+  .slick-center {
+    transform: scale(1);
   }
 }
 
@@ -1293,22 +1324,39 @@ footer::before {
   .works-slider,
   .dance-slider {
     max-width: 100%;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 
   .work-item,
   .dance-item {
-    padding: 0.75rem;
+    padding: 0.5rem;
+    /* 小さいスマホでもカードを大きく */
+    margin: 0;
+    width: 100%;
   }
 
   .work-info,
   .dance-info {
-    padding: 0;
+    padding: 0.5rem 0;
   }
 
   .work-image,
   .dance-media {
     margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  /* 小さいスマホ向けにスライダーのナビゲーションを調整 */
+  .slick-prev {
+    left: -0.5rem;
+  }
+
+  .slick-next {
+    right: -0.5rem;
+  }
+
+  .slick-dots {
+    bottom: -25px;
   }
 }
 

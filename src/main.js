@@ -1,5 +1,10 @@
 // カスタムカーソル
 function initCustomCursor() {
+  // スマホの場合はカスタムカーソルを初期化しない
+  if (window.innerWidth <= 768) {
+    return;
+  }
+
   const cursor = document.createElement("div");
   cursor.classList.add("cursor");
   document.body.appendChild(cursor);
@@ -34,6 +39,23 @@ function initCustomCursor() {
       cursor.classList.remove("cursor-grow");
       cursorFollower.classList.remove("cursor-follower-grow");
     });
+  });
+
+  // ウィンドウリサイズ時にカーソルを更新
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 768) {
+      if (document.body.contains(cursor)) {
+        document.body.removeChild(cursor);
+      }
+      if (document.body.contains(cursorFollower)) {
+        document.body.removeChild(cursorFollower);
+      }
+    } else {
+      if (!document.body.contains(cursor)) {
+        document.body.appendChild(cursor);
+        document.body.appendChild(cursorFollower);
+      }
+    }
   });
 }
 
@@ -199,6 +221,18 @@ $(document).ready(function () {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
+          centerPadding: "15%", // スマホではカードの両サイドに余白を追加
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "5%", // 小さいスマホでは余白を小さく
+          arrows: true,
         },
       },
     ],
@@ -233,9 +267,26 @@ $(document).ready(function () {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
+          centerPadding: "15%", // スマホではカードの両サイドに余白を追加
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "5%", // 小さいスマホでは余白を小さく
+          arrows: true,
         },
       },
     ],
+  });
+
+  // ウィンドウサイズの変更を監視
+  $(window).on("resize", function () {
+    $(".works-slider, .dance-slider").slick("setPosition");
   });
 });
 
