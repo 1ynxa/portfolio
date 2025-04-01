@@ -14,8 +14,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   </head>
   <body>
+    <!-- パーティクル背景 -->
+    <div id="particles-js"></div>
+
     <nav class="main-nav">
       <div class="nav-container">
         <div class="logo"><a href="index.html">Portfolio</a></div>
@@ -75,9 +80,7 @@
                   >使用技術: Rhinoceros/AutoCad/Illustrator</span
                 >
               </div>
-              <p class="work-description">
-                既存の団地に新たな機能を付加することで、コミュニティを活性化させる提案。既存の建物を生かしながら、新しい空間を創出します。
-              </p>
+              <p class="work-description">三次元てきな空間を実現</p>
             </div>
           </div>
 
@@ -96,7 +99,7 @@
                 >
               </div>
               <p class="work-description">
-                大学キャンパス内の動線を見直し、学生間のコミュニケーションを促進する階段の提案。従来の移動手段としての役割だけでなく、交流の場としての機能を持たせています。
+                一見、階段ではないように見えるが、実は階段である。
               </p>
             </div>
           </div>
@@ -116,7 +119,7 @@
                 >
               </div>
               <p class="work-description">
-                海が見える立地を活かした住宅設計。プライバシーを確保しながらも、開放的な空間構成を実現しています。教授の研究活動と生活の両立を考慮した間取りです。
+                海が見える立地を活かした住宅設計。プライバシーを確保しながらも、開放的な空間構成を実現しています。
               </p>
             </div>
           </div>
@@ -153,9 +156,7 @@
                 <span class="work-year">制作年: 2023年</span>
                 <span class="work-tech">使用技術: Illustrator</span>
               </div>
-              <p class="work-description">
-                SaaS製品のブランディングのためのキャラクターデザイン。親しみやすさと機能性を表現するシンプルでありながら特徴的なデザインに仕上げました。
-              </p>
+              <p class="work-description">SaaS製品のキャラクターデザイン。</p>
             </div>
           </div>
         </div>
@@ -167,6 +168,14 @@
         </div>
       </section>
     </main>
+
+    <!-- モーダル表示用のテンプレート -->
+    <div class="modal" id="workModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body"></div>
+      </div>
+    </div>
 
     <footer>
       <p>&copy; 2024 Egami Ryohei. All rights reserved.</p>

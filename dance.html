@@ -14,8 +14,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   </head>
   <body>
+    <!-- パーティクル背景 -->
+    <div id="particles-js"></div>
+
     <nav class="main-nav">
       <div class="nav-container">
         <div class="logo"><a href="index.html">Portfolio</a></div>
@@ -63,7 +68,7 @@
                 <span class="dance-place">場所: 藤井寺パープルホール</span>
               </div>
               <p class="dance-description">
-                大学1年生コンテストで優勝を獲得した作品。13人のリーダーの1人として振り付けから作品構成、照明演出まで担当。チームワークとオリジナリティが評価され、優勝に導きました。
+                大学1年生コンテストで優勝を獲得した作品。13人のリーダーの1人として振り付けから作品構成まで担当。チームワークとオリジナリティが評価され、優勝に導きました。
               </p>
             </div>
           </div>
@@ -88,7 +93,7 @@
                 <span class="dance-place">場所: 神戸</span>
               </div>
               <p class="dance-description">
-                屋外空間を活かした公演作品。自然光と風を取り入れた振り付けと構成により、屋内では表現できない開放感のあるパフォーマンスを実現しました。
+                屋内では表現できない開放感のあるパフォーマンスを実現しました。
               </p>
             </div>
           </div>
@@ -112,9 +117,7 @@
                 <span class="dance-date">開催日: 2024年</span>
                 <span class="dance-place">場所: 神戸文化ホール</span>
               </div>
-              <p class="dance-description">
-                新入生に向けた公演作品。グループの魅力を伝えるために、多様なダンススタイルを織り交ぜた構成と、感情表現を重視した振り付けで観客を魅了しました。
-              </p>
+              <p class="dance-description">新入生に向けた公演作品。</p>
             </div>
           </div>
 
@@ -138,13 +141,13 @@
                 <span class="dance-place">場所: アルカイックホール</span>
               </div>
               <p class="dance-description">
-                大学生活の集大成となる引退公演。これまでの経験と技術を全て注ぎ込んだ作品で、感謝と別れの気持ちを表現しました。動きと音楽、照明を緻密に組み合わせた演出で、観客に感動を届けました。
+                大学生活の集大成となる引退公演。これまでの経験と技術を全て注ぎ込んだ作品。
               </p>
             </div>
           </div>
 
           <!-- ダンス5 -->
-          <div class="dance-card" data-category="performance">
+          <!-- <div class="dance-card" data-category="performance">
             <div class="dance-video">
               <div class="youtube-embed">
                 <iframe
@@ -166,7 +169,7 @@
                 自身の個性を表現したソロパフォーマンス。経験を積んだダンススキルと独自の感性を融合させ、観客を魅了する演出を心がけました。
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="back-to-home">
@@ -176,6 +179,14 @@
         </div>
       </section>
     </main>
+
+    <!-- モーダル表示用のテンプレート -->
+    <div class="modal" id="workModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body"></div>
+      </div>
+    </div>
 
     <footer>
       <p>&copy; 2024 Egami Ryohei. All rights reserved.</p>

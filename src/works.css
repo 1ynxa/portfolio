@@ -1,29 +1,49 @@
 /* Works & Dance詳細ページのスタイル */
 :root {
-  --primary-color: #2c3e50;
-  --accent-color: #3498db;
-  --text-color: #333;
-  --background-color: #fff;
-  --card-bg: #fff;
-  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --primary-color: #343a40;
+  --accent-color: #4ecdc4;
+  --text-color: #f0f0f0;
+  --background-color: #2f3638;
+  --card-bg: #3a4245;
+  --card-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
 }
 
 /* ページヘッダー */
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
-  padding-top: 5rem;
+  padding-top: 6rem;
+  position: relative;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
+  transform: translateX(-50%);
 }
 
 .page-header h1 {
-  font-size: 3rem;
-  color: var(--primary-color);
+  font-size: 3.5rem;
+  color: var(--accent-color);
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+  letter-spacing: 3px;
 }
 
 .page-header .subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 /* グリッドレイアウト */
@@ -44,12 +64,36 @@
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  border-top: 3px solid transparent;
 }
 
 .work-card:hover,
 .dance-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(78, 205, 196, 0.3);
+  border-top: 3px solid var(--accent-color);
+}
+
+.work-card::before,
+.dance-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 95%, var(--accent-color) 95%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.work-card:hover::before,
+.dance-card:hover::before {
+  opacity: 0.2;
 }
 
 .work-image,
@@ -57,6 +101,29 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  position: relative;
+}
+
+.work-image::after,
+.dance-video::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 70%,
+    rgba(47, 54, 56, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-card:hover .work-image::after,
+.dance-card:hover .dance-video::after {
+  opacity: 1;
 }
 
 .work-image img {
@@ -64,27 +131,37 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  filter: grayscale(30%);
 }
 
 .work-card:hover .work-image img {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 
 .work-info,
 .dance-info {
   padding: 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .work-info h3,
 .dance-info h3 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.work-card:hover .work-info h3,
+.dance-card:hover .dance-info h3 {
+  color: #6adbd4;
 }
 
 .work-info p,
 .dance-info p {
-  color: #666;
+  color: var(--text-color);
   line-height: 1.5;
 }
 
@@ -92,6 +169,7 @@
 .dance-details {
   margin: 1rem 0;
   font-size: 0.9rem;
+  color: #aaa;
 }
 
 .work-year,
@@ -100,17 +178,19 @@
 .dance-place {
   display: block;
   margin-bottom: 0.3rem;
-  color: #777;
+  color: #999;
 }
 
 .work-description,
 .dance-description {
   margin-top: 1rem;
   line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
 .dance-role {
-  color: #555;
+  color: #bbb;
   font-weight: 500;
 }
 
@@ -124,22 +204,141 @@
   display: inline-flex;
   align-items: center;
   padding: 0.7rem 1.5rem;
-  background: var(--primary-color);
-  color: white;
+  background: var(--card-bg);
+  color: var(--accent-color);
   text-decoration: none;
   border-radius: 30px;
   font-weight: 500;
   transition: all 0.3s ease;
   gap: 0.5rem;
+  border: 1px solid var(--accent-color);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.back-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
 }
 
 .back-button:hover {
-  background: #1a2530;
-  transform: translateY(-2px);
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+}
+
+.back-button:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .back-button i {
   font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+  transform: translateX(-3px);
+}
+
+/* カテゴリーフィルター */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-button {
+  padding: 0.5rem 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid #333;
+  border-radius: 30px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+}
+
+/* アニメーション */
+.work-card,
+.dance-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease,
+    border-top 0.3s ease;
+}
+
+.work-card.visible,
+.dance-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* モーダルスタイルの強化 */
+.modal-work-content,
+.modal-dance-content {
+  color: var(--text-color);
+}
+
+.modal-work-content h2,
+.modal-dance-content h2 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  color: var(--accent-color);
+  text-align: left;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.modal-work-content h2::after,
+.modal-dance-content h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.modal-subtitle {
+  color: #bbb;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-work-content .work-details,
+.modal-dance-content .dance-details {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(47, 54, 56, 0.3);
+  border-radius: 8px;
+  border-left: 2px solid var(--accent-color);
+}
+
+.modal-work-content .work-description,
+.modal-dance-content .dance-description {
+  line-height: 1.8;
+  font-size: 0.95rem;
 }
 
 /* レスポンシブデザイン */
@@ -154,7 +353,7 @@
 
 @media (max-width: 768px) {
   .page-header {
-    padding-top: 4rem;
+    padding-top: 5rem;
   }
 
   .page-header h1 {
@@ -171,6 +370,10 @@
   .work-info h3,
   .dance-info h3 {
     font-size: 1.3rem;
+  }
+
+  .filter-container {
+    flex-wrap: wrap;
   }
 }
 
