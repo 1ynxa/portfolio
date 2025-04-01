@@ -193,3 +193,20 @@ document.querySelectorAll(".section").forEach((section) => {
   section.classList.add("fade-in");
   observer.observe(section);
 });
+
+// ハンバーガーメニュー
+const hamburgerMenu = document.querySelector(".hamburger-menu");
+const navLinks = document.querySelector(".nav-links");
+
+hamburgerMenu.addEventListener("click", () => {
+  hamburgerMenu.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+// メニューリンクをクリックしたらメニューを閉じる
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburgerMenu.classList.remove("active");
+    navLinks.classList.remove("active");
+  });
+});
