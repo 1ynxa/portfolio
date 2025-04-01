@@ -708,6 +708,15 @@ footer::before {
   /* スマートフォン用スタイル */
   .hamburger-menu {
     display: flex !important;
+    background-color: transparent !important;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    right: 0;
+    width: 30px;
+    height: 24px;
+    margin-right: 5px; /* 右側に余白を追加 */
   }
 
   .nav-container {
@@ -770,8 +779,25 @@ footer::before {
     left: 25%;
   }
 
+  .hamburger-menu.active {
+    /* バツ表示時のコンテナサイズを確保 */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hamburger-menu.active span {
+    /* バツ表示時のスパン共通スタイル */
+    position: absolute;
+    width: 80%; /* 線の長さを少し短く */
+    left: 10%; /* 中央寄せ */
+  }
+
   .hamburger-menu.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: rotate(45deg);
+    top: 11px;
   }
 
   .hamburger-menu.active span:nth-child(2) {
@@ -779,7 +805,8 @@ footer::before {
   }
 
   .hamburger-menu.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 11px;
   }
 
   .carousel-container {
@@ -1170,6 +1197,23 @@ footer::before {
   height: 24px;
   cursor: pointer;
   z-index: 1001;
+  background-color: transparent; /* 背景を透明に */
+  box-shadow: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+}
+
+.hamburger-menu:focus,
+.hamburger-menu:active {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
 }
 
 .hamburger-menu span {
@@ -1178,6 +1222,12 @@ footer::before {
   height: 2px;
   background-color: var(--accent-color);
   transition: all 0.3s ease;
+  border-radius: 2px;
+  box-shadow: none;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 /* カルーセル */
@@ -1684,9 +1734,26 @@ footer::before {
   color: #d8f6ff;
   text-shadow: 0 0 5px #4ecdc4, 0 0 10px rgba(78, 205, 196, 0.8),
     0 0 15px rgba(78, 205, 196, 0.6);
-  animation: revealText 1.5s ease forwards, colorShift 8s infinite alternate,
-    floatText 5s ease-in-out infinite;
   letter-spacing: 6px;
+  display: inline-block; /* インライン要素に変更 */
+}
+
+.glow-effect span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: charFadeIn 0.5s forwards;
+}
+
+@keyframes charFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .glow-effect::before {
@@ -1720,7 +1787,8 @@ footer::before {
   );
   filter: blur(8px);
   opacity: 0.4;
-  animation: moveGradient 6s infinite alternate;
+  animation: moveGradient 6s infinite alternate,
+    floatText 5s ease-in-out infinite;
 }
 
 @keyframes colorShift {

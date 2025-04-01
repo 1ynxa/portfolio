@@ -469,6 +469,26 @@ function initScrollAnimation() {
   window.addEventListener("scroll", checkScroll);
 }
 
+// Portfolio文字のアニメーション初期化
+function initPortfolioAnimation() {
+  const title = document.querySelector(".glow-effect");
+  if (!title) return;
+
+  // 既存のテキストを取得
+  const text = title.textContent;
+  // 中身を一旦空にする
+  title.textContent = "";
+
+  // 一文字ずつspanで包む
+  Array.from(text).forEach((char, index) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    // 遅延を設定
+    span.style.animationDelay = `${index * 0.1}s`;
+    title.appendChild(span);
+  });
+}
+
 // 初期化
 $(document).ready(function () {
   // カスタムカーソル初期化
@@ -482,6 +502,9 @@ $(document).ready(function () {
 
   // カルーセル初期化
   initSliders();
+
+  // Portfolio文字のアニメーション初期化
+  initPortfolioAnimation();
 
   // モバイルサイズでの初期位置設定
   if ($(window).width() <= 768) {
