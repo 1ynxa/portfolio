@@ -178,6 +178,17 @@ function initCategoryFilter() {
 
 // スクロールアニメーション
 function initScrollAnimations() {
+  // SPサイズでは詳細ページのアニメーションを無効化
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll(".work-card, .dance-card").forEach((card) => {
+      card.classList.add("visible");
+      card.style.opacity = 1;
+      card.style.transform = "translateY(0)";
+      card.style.transition = "box-shadow 0.2s ease, border-top 0.2s ease";
+    });
+    return;
+  }
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -100px 0px",
@@ -205,6 +216,18 @@ function initScrollAnimations() {
 
   document.querySelectorAll(".work-card, .dance-card").forEach((card) => {
     observer.observe(card);
+  });
+
+  // リサイズイベントの監視
+  window.addEventListener("resize", function () {
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll(".work-card, .dance-card").forEach((card) => {
+        card.classList.add("visible");
+        card.style.opacity = 1;
+        card.style.transform = "translateY(0)";
+        card.style.transition = "box-shadow 0.2s ease, border-top 0.2s ease";
+      });
+    }
   });
 }
 

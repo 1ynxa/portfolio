@@ -826,6 +826,67 @@ footer::before {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
+
+  .works-slider,
+  .dance-slider {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .work-item,
+  .dance-item {
+    margin: 0 0.6rem;
+    /* SP表示時のカードをより大きく */
+    padding: 0.5rem;
+    max-width: 95%;
+    /* SPでのアニメーションを無効化 */
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: box-shadow 0.2s ease, border-top 0.2s ease;
+    /* SPでのシャドウを小さく */
+    box-shadow: 0 2px 8px rgba(78, 205, 196, 0.15);
+  }
+
+  .work-item:hover,
+  .dance-item:hover {
+    /* SPではホバー時のシャドウも控えめに */
+    box-shadow: 0 4px 10px rgba(78, 205, 196, 0.2);
+  }
+
+  .work-info h3,
+  .dance-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .work-details,
+  .dance-details {
+    font-size: 0.85rem;
+  }
+
+  .work-image,
+  .dance-media {
+    margin-bottom: 0.75rem;
+    /* アスペクト比を維持しつつ、より大きく表示 */
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
+
+  /* スライダーの中央表示を強化するが、アニメーションは無効化 */
+  .slick-slide {
+    transform: none !important;
+    transition: none !important;
+    padding: 0 5px;
+  }
+
+  .slick-center {
+    transform: none !important;
+  }
+
+  /* スライダーの余白を調整 */
+  .slick-list {
+    padding: 10px 0 !important;
+    margin: 0 -5px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1279,16 +1340,29 @@ footer::before {
 @media (max-width: 768px) {
   .works-slider,
   .dance-slider {
-    max-width: 600px;
-    padding: 0 1.5rem;
+    max-width: 100%;
+    padding: 0 1rem;
   }
 
   .work-item,
   .dance-item {
-    margin: 0 0.25rem;
+    margin: 0 0.6rem;
     /* SP表示時のカードをより大きく */
     padding: 0.5rem;
-    max-width: 100%;
+    max-width: 95%;
+    /* SPでのアニメーションを無効化 */
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: box-shadow 0.2s ease, border-top 0.2s ease;
+    /* SPでのシャドウを小さく */
+    box-shadow: 0 2px 8px rgba(78, 205, 196, 0.15);
+  }
+
+  .work-item:hover,
+  .dance-item:hover {
+    /* SPではホバー時のシャドウも控えめに */
+    box-shadow: 0 4px 10px rgba(78, 205, 196, 0.2);
+    transform: translateY(-5px) !important;
   }
 
   .work-info h3,
@@ -1309,14 +1383,21 @@ footer::before {
     width: 100%;
   }
 
-  /* スライダーの中央表示を強化 */
+  /* スライダーの中央表示を強化するが、アニメーションは無効化 */
   .slick-slide {
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
+    transform: none !important;
+    transition: none !important;
+    padding: 0 5px;
   }
 
   .slick-center {
-    transform: scale(1);
+    transform: none !important;
+  }
+
+  /* スライダーの余白を調整 */
+  .slick-list {
+    padding: 10px 0 !important;
+    margin: 0 -5px;
   }
 }
 
@@ -1324,15 +1405,15 @@ footer::before {
   .works-slider,
   .dance-slider {
     max-width: 100%;
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .work-item,
   .dance-item {
-    padding: 0.5rem;
+    padding: 0.4rem;
     /* 小さいスマホでもカードを大きく */
-    margin: 0;
-    width: 100%;
+    margin: 0 0.4rem;
+    width: 94%;
   }
 
   .work-info,
@@ -1348,15 +1429,30 @@ footer::before {
 
   /* 小さいスマホ向けにスライダーのナビゲーションを調整 */
   .slick-prev {
-    left: -0.5rem;
+    left: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 10;
   }
 
   .slick-next {
-    right: -0.5rem;
+    right: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 10;
   }
 
   .slick-dots {
-    bottom: -25px;
+    bottom: -20px;
+  }
+
+  /* 小さいスマホでのスライドの余白調整 */
+  .slick-slide {
+    padding: 0 3px;
+  }
+
+  .slick-list {
+    margin: 0 -3px;
   }
 }
 

@@ -221,8 +221,9 @@ $(document).ready(function () {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
-          centerPadding: "15%", // スマホではカードの両サイドに余白を追加
+          centerPadding: "5px", // SPでは少し余白を設定
           arrows: true,
+          speed: 100, // SPではアニメーション速度を早く
         },
       },
       {
@@ -231,8 +232,9 @@ $(document).ready(function () {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
-          centerPadding: "5%", // 小さいスマホでは余白を小さく
+          centerPadding: "3px", // 小さいスマホでは少し余白を設定
           arrows: true,
+          speed: 100, // SPではアニメーション速度を早く
         },
       },
     ],
@@ -267,8 +269,9 @@ $(document).ready(function () {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
-          centerPadding: "15%", // スマホではカードの両サイドに余白を追加
+          centerPadding: "5px", // SPでは少し余白を設定
           arrows: true,
+          speed: 100, // SPではアニメーション速度を早く
         },
       },
       {
@@ -277,8 +280,9 @@ $(document).ready(function () {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
-          centerPadding: "5%", // 小さいスマホでは余白を小さく
+          centerPadding: "3px", // 小さいスマホでは少し余白を設定
           arrows: true,
+          speed: 100, // SPではアニメーション速度を早く
         },
       },
     ],
@@ -288,6 +292,13 @@ $(document).ready(function () {
   $(window).on("resize", function () {
     $(".works-slider, .dance-slider").slick("setPosition");
   });
+
+  // SPサイズの場合は初期表示時にsetPositionを実行
+  if (window.innerWidth <= 768) {
+    setTimeout(function () {
+      $(".works-slider, .dance-slider").slick("setPosition");
+    }, 100);
+  }
 });
 
 // 強化されたモーダル表示機能
