@@ -30,74 +30,63 @@ window.addEventListener("scroll", () => {
   lastScrollTop = scrollTop;
 });
 
-// カルーセル機能
-class Carousel {
-  constructor(container) {
-    this.container = container;
-    this.track = container.querySelector(".carousel-track");
-    this.items = container.querySelectorAll(".work-item, .dance-item");
-    this.prevButton = container.querySelector(".carousel-button.prev");
-    this.nextButton = container.querySelector(".carousel-button.next");
-    this.currentIndex = 0;
-    this.itemsPerView = this.getItemsPerView();
+// Slickスライダーの初期化
+$(document).ready(function () {
+  // Worksスライダー
+  $(".works-slider").slick({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  });
 
-    this.init();
-  }
-
-  getItemsPerView() {
-    if (window.innerWidth <= 768) return 1;
-    if (window.innerWidth <= 1024) return 2;
-    return 3;
-  }
-
-  init() {
-    this.updateButtons();
-    this.addEventListeners();
-    window.addEventListener("resize", () => {
-      this.itemsPerView = this.getItemsPerView();
-      this.updateButtons();
-    });
-  }
-
-  addEventListeners() {
-    this.prevButton.addEventListener("click", () => this.prev());
-    this.nextButton.addEventListener("click", () => this.next());
-  }
-
-  updateButtons() {
-    this.prevButton.style.display = this.currentIndex === 0 ? "none" : "flex";
-    this.nextButton.style.display =
-      this.currentIndex >= this.items.length - this.itemsPerView
-        ? "none"
-        : "flex";
-  }
-
-  prev() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.updateCarousel();
-    }
-  }
-
-  next() {
-    if (this.currentIndex < this.items.length - this.itemsPerView) {
-      this.currentIndex++;
-      this.updateCarousel();
-    }
-  }
-
-  updateCarousel() {
-    const itemWidth = 100 / this.itemsPerView;
-    this.track.style.transform = `translateX(-${
-      this.currentIndex * itemWidth
-    }%)`;
-    this.updateButtons();
-  }
-}
-
-// カルーセルの初期化
-document.querySelectorAll(".carousel-container").forEach((container) => {
-  new Carousel(container);
+  // Danceスライダー
+  $(".dance-slider").slick({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  });
 });
 
 // モーダル表示機能

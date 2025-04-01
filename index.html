@@ -13,6 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="src/slick.css" />
+    <link rel="stylesheet" type="text/css" href="src/slick-theme.css" />
   </head>
   <body>
     <nav class="main-nav">
@@ -73,207 +76,167 @@
 
       <section id="works" class="section">
         <h2>Works</h2>
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-track">
-              <!-- ブロック-->
-              <div class="work-item">
-                <div class="work-image">
-                  <img
-                    src="public/img01.jpg"
-                    alt="本棚トンネル"
-                    class="work-img"
-                  />
-                </div>
-                <div class="work-info">
-                  <h3>本棚トンネル</h3>
-                  <p>本のある公園とは</p>
-                  <p class="work-details">
-                    制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="work-item">
-                <div class="work-image">
-                  <img
-                    src="public/img02.jpg"
-                    alt="作品タイトル"
-                    class="work-img"
-                  />
-                </div>
-                <div class="work-info">
-                  <h3>団地の拡張</h3>
-                  <p>団地の改修</p>
-                  <p class="work-details">
-                    制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="work-item">
-                <div class="work-image">
-                  <img
-                    src="public/img03.jpg"
-                    alt="作品タイトル"
-                    class="work-img"
-                  />
-                </div>
-                <div class="work-info">
-                  <h3>追大コミュニケーション</h3>
-                  <p>必要な階段</p>
-                  <p class="work-details">
-                    制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="work-item">
-                <div class="work-image">
-                  <img
-                    src="public/img04.jpg"
-                    alt="作品タイトル"
-                    class="work-img"
-                  />
-                </div>
-                <div class="work-info">
-                  <h3>七里ヶ浜の家</h3>
-                  <p>教授のための家</p>
-                  <p class="work-details">
-                    制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="work-item">
-                <div class="work-image">
-                  <img
-                    src="public/img05.jpg"
-                    alt="作品タイトル"
-                    class="work-img"
-                  />
-                </div>
-                <div class="work-info">
-                  <h3>七里ヶ浜の家</h3>
-                  <p>教授のための家</p>
-                  <p class="work-details">
-                    制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="work-item">
-                <div class="work-image">
-                  <img
-                    src="public/img08.jpg"
-                    alt="作品タイトル"
-                    class="work-img"
-                  />
-                </div>
-                <div class="work-info">
-                  <h3>LPcats</h3>
-                  <p>saasのキャラクターデザイン</p>
-                  <p class="work-details">
-                    制作年: <br />使用技術: Illustrator
-                  </p>
-                </div>
-              </div>
+        <div class="works-slider">
+          <!-- ブロック-->
+          <div class="work-item">
+            <div class="work-image">
+              <img src="public/img01.jpg" alt="本棚トンネル" class="work-img" />
+            </div>
+            <div class="work-info">
+              <h3>本棚トンネル</h3>
+              <p>本のある公園とは</p>
+              <p class="work-details">
+                制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
+              </p>
             </div>
           </div>
-          <button class="carousel-button prev">&#10094;</button>
-          <button class="carousel-button next">&#10095;</button>
+          <!-- ブロック-->
+          <div class="work-item">
+            <div class="work-image">
+              <img src="public/img02.jpg" alt="作品タイトル" class="work-img" />
+            </div>
+            <div class="work-info">
+              <h3>団地の拡張</h3>
+              <p>団地の改修</p>
+              <p class="work-details">
+                制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
+              </p>
+            </div>
+          </div>
+          <!-- ブロック-->
+          <div class="work-item">
+            <div class="work-image">
+              <img src="public/img03.jpg" alt="作品タイトル" class="work-img" />
+            </div>
+            <div class="work-info">
+              <h3>追大コミュニケーション</h3>
+              <p>必要な階段</p>
+              <p class="work-details">
+                制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
+              </p>
+            </div>
+          </div>
+          <!-- ブロック-->
+          <div class="work-item">
+            <div class="work-image">
+              <img src="public/img04.jpg" alt="作品タイトル" class="work-img" />
+            </div>
+            <div class="work-info">
+              <h3>七里ヶ浜の家</h3>
+              <p>教授のための家</p>
+              <p class="work-details">
+                制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
+              </p>
+            </div>
+          </div>
+          <!-- ブロック-->
+          <div class="work-item">
+            <div class="work-image">
+              <img src="public/img05.jpg" alt="作品タイトル" class="work-img" />
+            </div>
+            <div class="work-info">
+              <h3>七里ヶ浜の家</h3>
+              <p>教授のための家</p>
+              <p class="work-details">
+                制作年: <br />使用技術: Rhinoceros/AutoCad/Illustrator
+              </p>
+            </div>
+          </div>
+          <!-- ブロック-->
+          <div class="work-item">
+            <div class="work-image">
+              <img src="public/img08.jpg" alt="作品タイトル" class="work-img" />
+            </div>
+            <div class="work-info">
+              <h3>LPcats</h3>
+              <p>saasのキャラクターデザイン</p>
+              <p class="work-details">制作年: <br />使用技術: Illustrator</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="dance" class="section">
         <h2>Dance</h2>
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-track">
-              <!-- ブロック-->
-              <div class="dance-item">
-                <div class="dance-media">
-                  <div class="youtube-embed">
-                    <iframe
-                      src="https://www.youtube.com/embed/x-yjLhtpG-I?si=lUgVBqcpkUhrFKTP"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
-                <div class="dance-info">
-                  <h3>Super★NOVA BUZZ STYLE vol.17 優勝作品</h3>
-                  <p>
-                    13人のリーダーの1人として振り作り、作品構成、照明演出担当
-                  </p>
-                  <p class="dance-details">
-                    開催日: 2023年<br />場所: 藤井寺パープルホール
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック -->
-              <div class="dance-item">
-                <div class="dance-media">
-                  <div class="youtube-embed">
-                    <iframe
-                      src="https://www.youtube.com/embed/_2CGGNrQyZ4?si=T6oKRX1h7uNopKcq"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
-                <div class="dance-info">
-                  <h3>Super☆Nova野外公演「Gソイラテ」</h3>
-                  <p>振り作り、作品構成担当</p>
-                  <p class="dance-details">開催日: 2023年<br />場所: 神戸</p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="dance-item">
-                <div class="dance-media">
-                  <div class="youtube-embed">
-                    <iframe
-                      src="https://www.youtube.com/embed/5F5hNhk26bM?si=ai_V8fHLdfmi6p1L"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
-                <div class="dance-info">
-                  <h3>Super☆Nova新歓公演「ゆきりょへ」</h3>
-                  <p>振り作り、作品構成、照明演出担当</p>
-                  <p class="dance-details">
-                    開催日: 2024年<br />場所: 神戸文化ホール
-                  </p>
-                </div>
-              </div>
-              <!-- ブロック-->
-              <div class="dance-item">
-                <div class="dance-media">
-                  <div class="youtube-embed">
-                    <iframe
-                      src="https://www.youtube.com/embed/CmoiXkgMflI?si=Fgwkh-vx8sBsFyzR"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
-                <div class="dance-info">
-                  <h3>Super☆Nova引退公演「ゆきりょへ」</h3>
-                  <p>振り作り、作品構成、照明演出担当</p>
-                  <p class="dance-details">
-                    開催日: 2024年<br />場所: アルカイックホール
-                  </p>
-                </div>
+        <div class="dance-slider">
+          <!-- ブロック-->
+          <div class="dance-item">
+            <div class="dance-media">
+              <div class="youtube-embed">
+                <iframe
+                  src="https://www.youtube.com/embed/x-yjLhtpG-I?si=lUgVBqcpkUhrFKTP"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
+            <div class="dance-info">
+              <h3>Super★NOVA BUZZ STYLE vol.17 優勝作品</h3>
+              <p>13人のリーダーの1人として振り作り、作品構成、照明演出担当</p>
+              <p class="dance-details">
+                開催日: 2023年<br />場所: 藤井寺パープルホール
+              </p>
+            </div>
           </div>
-          <button class="carousel-button prev">&#10094;</button>
-          <button class="carousel-button next">&#10095;</button>
+          <!-- ブロック -->
+          <div class="dance-item">
+            <div class="dance-media">
+              <div class="youtube-embed">
+                <iframe
+                  src="https://www.youtube.com/embed/_2CGGNrQyZ4?si=T6oKRX1h7uNopKcq"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div class="dance-info">
+              <h3>Super☆Nova野外公演「Gソイラテ」</h3>
+              <p>振り作り、作品構成担当</p>
+              <p class="dance-details">開催日: 2023年<br />場所: 神戸</p>
+            </div>
+          </div>
+          <!-- ブロック-->
+          <div class="dance-item">
+            <div class="dance-media">
+              <div class="youtube-embed">
+                <iframe
+                  src="https://www.youtube.com/embed/5F5hNhk26bM?si=ai_V8fHLdfmi6p1L"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div class="dance-info">
+              <h3>Super☆Nova新歓公演「ゆきりょへ」</h3>
+              <p>振り作り、作品構成、照明演出担当</p>
+              <p class="dance-details">
+                開催日: 2024年<br />場所: 神戸文化ホール
+              </p>
+            </div>
+          </div>
+          <!-- ブロック-->
+          <div class="dance-item">
+            <div class="dance-media">
+              <div class="youtube-embed">
+                <iframe
+                  src="https://www.youtube.com/embed/CmoiXkgMflI?si=Fgwkh-vx8sBsFyzR"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div class="dance-info">
+              <h3>Super☆Nova引退公演「ゆきりょへ」</h3>
+              <p>振り作り、作品構成、照明演出担当</p>
+              <p class="dance-details">
+                開催日: 2024年<br />場所: アルカイックホール
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -320,6 +283,20 @@
       <p>&copy; 2024 Egami Ryohei. All rights reserved.</p>
     </footer>
 
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <!-- Slick JS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="src/main.js"></script>
   </body>
 </html>
