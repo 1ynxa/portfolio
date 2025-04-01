@@ -26,7 +26,7 @@ function initCustomCursor() {
 
   // リンクやボタンにホバーしたときのエフェクト
   const hoverElements = document.querySelectorAll(
-    "a, button, .work-item, .dance-item, .slick-arrow"
+    "a, button, .work-item, .dance-item, .slick-arrow, .scroll-down-button"
   );
 
   hoverElements.forEach((element) => {
@@ -190,116 +190,153 @@ function createCatSilhouette() {
   // 削除 - 猫のシルエットを表示しない
 }
 
-// Slickスライダーの初期化
-$(document).ready(function () {
-  // Worksスライダー
-  $(".works-slider").slick({
-    dots: true,
-    dotsClass: "slick-dots",
-    appendDots: $(".works-slider"),
+// カルーセル設定
+function initSliders() {
+  const worksSlider = $(".works-slider");
+  const danceSlider = $(".dance-slider");
+
+  const sliderSettings = {
     infinite: true,
-    speed: 200, // より速く反応するように変更
+    speed: 200,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: true,
     centerMode: true,
     centerPadding: "0px",
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    waitForAnimate: false, // アニメーション待ちを無効化して滑らかに
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 992,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: true,
+          centerPadding: "10px",
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "5px", // SPでは少し余白を設定
-          arrows: true,
-          speed: 100, // SPではアニメーション速度を早く
+          centerPadding: "5px",
+          speed: 100,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "3px", // 小さいスマホでは少し余白を設定
-          arrows: true,
-          speed: 100, // SPではアニメーション速度を早く
+          centerPadding: "3px",
+          speed: 100,
         },
       },
     ],
-  });
+  };
 
-  // Danceスライダー
-  $(".dance-slider").slick({
-    dots: true,
-    dotsClass: "slick-dots",
-    appendDots: $(".dance-slider"),
-    infinite: true,
-    speed: 200, // より速く反応するように変更
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: true,
-    centerMode: true,
-    centerPadding: "0px",
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "5px", // SPでは少し余白を設定
-          arrows: true,
-          speed: 100, // SPではアニメーション速度を早く
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "3px", // 小さいスマホでは少し余白を設定
-          arrows: true,
-          speed: 100, // SPではアニメーション速度を早く
-        },
-      },
-    ],
-  });
+  // スライダー初期化
+  worksSlider.slick(sliderSettings);
+  danceSlider.slick(sliderSettings);
 
-  // ウィンドウサイズの変更を監視
+  // 初期化後に全てのスライドを表示状態にする
+  setTimeout(() => {
+    $(".work-item, .dance-item").addClass("visible");
+
+    // クローンスライドにもスタイルを適用
+    $(".slick-cloned .work-item, .slick-cloned .dance-item").css({
+      opacity: "1",
+      transform: "translateY(0)",
+    });
+  }, 100);
+
+  // リサイズ時のスライダー調整
   $(window).on("resize", function () {
-    $(".works-slider, .dance-slider").slick("setPosition");
+    if (worksSlider.hasClass("slick-initialized")) {
+      worksSlider.slick("setPosition");
+    }
+    if (danceSlider.hasClass("slick-initialized")) {
+      danceSlider.slick("setPosition");
+    }
   });
 
-  // SPサイズの場合は初期表示時にsetPositionを実行
-  if (window.innerWidth <= 768) {
-    setTimeout(function () {
-      $(".works-slider, .dance-slider").slick("setPosition");
-    }, 100);
-  }
-});
+  // ループ時のスライド遷移をスムーズにする
+  $(".slick-slider").on(
+    "beforeChange",
+    function (event, slick, currentSlide, nextSlide) {
+      // 最初のスライドへループする時や最後のスライドへループする時を管理
+      if (currentSlide === slick.slideCount - 1 && nextSlide === 0) {
+        // 最後から最初へのループ
+        $(".slick-slide").css("opacity", "1");
+      } else if (currentSlide === 0 && nextSlide === slick.slideCount - 1) {
+        // 最初から最後へのループ
+        $(".slick-slide").css("opacity", "1");
+      }
+    }
+  );
+}
+
+// TOPスクロールボタン実装
+function initScrollToTop() {
+  // スクロールボタン要素を作成
+  const scrollBtn = document.createElement("div");
+  scrollBtn.className = "scroll-to-top";
+  document.body.appendChild(scrollBtn);
+
+  // スクロールイベントでボタン表示を制御
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add("visible");
+      // 少しスクロールしたらパルスアニメーションを開始
+      if (window.scrollY > 700) {
+        scrollBtn.classList.add("pulse");
+      } else {
+        scrollBtn.classList.remove("pulse");
+      }
+    } else {
+      scrollBtn.classList.remove("visible");
+      scrollBtn.classList.remove("pulse");
+    }
+  });
+
+  // クリックイベントでトップにスクロール
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
+// ハンバーガーメニューの動作を改善
+function initHamburgerMenu() {
+  const hamburger = document.querySelector(".hamburger-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (!hamburger) return;
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+
+    // メニュー開閉時にbodyのスクロールを制御
+    if (navLinks.classList.contains("active")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  });
+
+  // メニューリンクをクリックしたらメニューを閉じる
+  const menuLinks = navLinks.querySelectorAll("a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  });
+}
 
 // 強化されたモーダル表示機能
 class Modal {
@@ -394,201 +431,68 @@ document.querySelectorAll(".dance-item").forEach((item) => {
   });
 });
 
-// 高度なスクロールアニメーション
-function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px",
-  };
+// スクロールアニメーションの初期化
+function initScrollAnimation() {
+  const fadeElements = document.querySelectorAll(".fade-in");
 
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
+  // スクロールダウンボタンのクリックイベント
+  const scrollDownButton = document.querySelector(".scroll-down-button");
+  if (scrollDownButton) {
+    scrollDownButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const aboutSection = document.querySelector("#about");
+      if (aboutSection) {
+        aboutSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }
     });
-  }, observerOptions);
-
-  // セクションごとに異なるアニメーションを適用
-  const aboutSection = document.getElementById("about");
-  if (aboutSection) {
-    const profileImage = aboutSection.querySelector(".profile-image");
-    const profileText = aboutSection.querySelector(".profile-text");
-
-    if (profileImage) {
-      profileImage.classList.add("slide-in-left");
-      fadeObserver.observe(profileImage);
-    }
-
-    if (profileText) {
-      profileText.classList.add("slide-in-right");
-      fadeObserver.observe(profileText);
-    }
   }
 
-  // ワークスとダンスのセクションはスケールインで表示
-  document.querySelectorAll("#works, #dance").forEach((section) => {
-    const items = section.querySelectorAll(".work-item, .dance-item");
-    items.forEach((item, index) => {
-      item.classList.add("scale-in");
-      item.style.transitionDelay = `${0.05 * index}s`; // 遅延を短くする
-      fadeObserver.observe(item);
-    });
-  });
+  function checkScroll() {
+    fadeElements.forEach((element) => {
+      const elementTop = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
 
-  // 通常のフェードイン
-  document
-    .querySelectorAll(".section:not(#about):not(#works):not(#dance)")
-    .forEach((section) => {
-      section.classList.add("fade-in");
-      fadeObserver.observe(section);
-    });
-}
-
-// 視差効果(パララックス)
-function initParallax() {
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    // イントロセクションの背景に視差効果を適用
-    document.getElementById("intro").style.backgroundPositionY = `${
-      scrollY * 0.5
-    }px`;
-
-    // セクション見出しにも軽い視差効果
-    document.querySelectorAll("h2").forEach((heading) => {
-      const rect = heading.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        const scrollSpeed = 0.05;
-        heading.style.transform = `translateY(${
-          (window.innerHeight / 2 - rect.top) * scrollSpeed
-        }px)`;
+      // 要素が画面内に入った時にvisibleクラスを追加
+      if (elementTop < windowHeight * 0.85) {
+        element.classList.add("visible");
       }
     });
-  });
-}
-
-// 初期化関数
-function init() {
-  // DOM読み込み完了後に実行
-  document.addEventListener("DOMContentLoaded", function () {
-    // パーティクルJS用の要素を追加
-    const particlesElement = document.createElement("div");
-    particlesElement.id = "particles-js";
-    document.body.prepend(particlesElement);
-
-    initCustomCursor();
-    // createCatSilhouette(); - 猫のシルエット生成を削除
-    initScrollAnimations();
-    initParallax();
-    initTypingAnimation();
-
-    // particles.jsが読み込まれていれば初期化
-    if (typeof particlesJS !== "undefined") {
-      initParticles();
-    } else {
-      // particles.jsを動的に読み込む
-      const script = document.createElement("script");
-      script.src =
-        "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-      script.onload = initParticles;
-      document.head.appendChild(script);
-    }
-  });
-}
-
-// ハンバーガーメニュー
-const hamburgerMenu = document.querySelector(".hamburger-menu");
-const navLinks = document.querySelector(".nav-links");
-
-hamburgerMenu.addEventListener("click", () => {
-  hamburgerMenu.classList.toggle("active");
-  navLinks.classList.toggle("active");
-});
-
-// メニューリンクをクリックしたらメニューを閉じる
-document.querySelectorAll(".nav-links a").forEach((link) => {
-  link.addEventListener("click", () => {
-    hamburgerMenu.classList.remove("active");
-    navLinks.classList.remove("active");
-  });
-});
-
-// Worksとdanceの詳細ページでモーダル処理を追加
-function initDetailPageModals() {
-  // 詳細ページのカードにクリックイベントを追加
-  document.querySelectorAll(".work-card").forEach((card) => {
-    card.addEventListener("click", () => {
-      const image = card.querySelector(".work-image img").src;
-      const title = card.querySelector("h3").textContent;
-      const subtitle = card.querySelector("p").textContent;
-      const details = card.querySelector(".work-details").innerHTML;
-      const description = card.querySelector(".work-description").textContent;
-
-      const content = `
-        <div class="modal-work-content">
-          <img src="${image}" alt="${title}">
-          <h2>${title}</h2>
-          <p class="modal-subtitle">${subtitle}</p>
-          <div class="work-details">${details}</div>
-          <p class="work-description">${description}</p>
-        </div>
-      `;
-
-      modal.open(content);
-    });
-  });
-
-  document.querySelectorAll(".dance-card").forEach((card) => {
-    card.addEventListener("click", () => {
-      const iframe = card.querySelector(".youtube-embed iframe").outerHTML;
-      const title = card.querySelector("h3").textContent;
-      const role = card.querySelector(".dance-role").textContent;
-      const details = card.querySelector(".dance-details").innerHTML;
-      const description = card.querySelector(".dance-description").textContent;
-
-      const content = `
-        <div class="modal-dance-content">
-          <div class="youtube-embed">
-            ${iframe}
-          </div>
-          <h2>${title}</h2>
-          <p class="dance-role">${role}</p>
-          <div class="dance-details">${details}</div>
-          <p class="dance-description">${description}</p>
-        </div>
-      `;
-
-      modal.open(content);
-    });
-  });
-}
-
-// タイピングアニメーション
-function initTypingAnimation() {
-  const introTitle = document.querySelector("#intro h1");
-  if (introTitle) {
-    const text = introTitle.textContent;
-    introTitle.textContent = "";
-    introTitle.style.opacity = 1;
-
-    let i = 0;
-    const typeInterval = setInterval(() => {
-      if (i < text.length) {
-        introTitle.textContent += text.charAt(i);
-        i++;
-      } else {
-        clearInterval(typeInterval);
-        // タイピング完了後にグロー効果を追加
-        introTitle.classList.add("glow-effect");
-        // data-text属性を追加して疑似要素用のテキストを設定
-        introTitle.setAttribute("data-text", text);
-      }
-    }, 100);
   }
+
+  // 初期チェック
+  checkScroll();
+
+  // スクロール時にチェック
+  window.addEventListener("scroll", checkScroll);
 }
 
-// 初期化を実行
-init();
+// 初期化
+$(document).ready(function () {
+  // カスタムカーソル初期化
+  initCustomCursor();
+
+  // ハンバーガーメニュー初期化
+  initHamburgerMenu();
+
+  // スクロールトップボタン初期化
+  initScrollToTop();
+
+  // カルーセル初期化
+  initSliders();
+
+  // モバイルサイズでの初期位置設定
+  if ($(window).width() <= 768) {
+    setTimeout(() => {
+      $(".slick-slider").slick("setPosition");
+    }, 200);
+  }
+
+  // スクロールアニメーションの初期化
+  initScrollAnimation();
+});
 
 // ページに応じた初期化
 if (
