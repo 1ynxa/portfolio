@@ -185,11 +185,6 @@ function initParticles() {
   }
 }
 
-// 黒猫のシルエットアニメーション - 削除
-function createCatSilhouette() {
-  // 削除 - 猫のシルエットを表示しない
-}
-
 // カルーセル設定
 function initSliders() {
   const worksSlider = $(".works-slider");

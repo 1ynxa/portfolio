@@ -171,11 +171,6 @@ function initParticles() {
   }
 }
 
-// カテゴリーフィルター機能の初期化関数を削除
-function initCategoryFilter() {
-  // このフィルター機能は必要ないので削除
-}
-
 // スクロールアニメーション
 function initScrollAnimations() {
   // SPサイズでは詳細ページのアニメーションを無効化
