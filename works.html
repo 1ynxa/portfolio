@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Works | Egami Ryohei</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/works.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </head>
+  <body>
+    <!-- パーティクル背景 -->
+    <div id="particles-js"></div>
+
+    <nav class="main-nav">
+      <div class="nav-container">
+        <div class="logo"><a href="index.html">Portfolio</a></div>
+        <button class="hamburger-menu" type="button" aria-label="メニュー">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#works">Works</a></li>
+          <li><a href="index.html#dance">Dance</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <section class="section works-page">
+        <div class="page-header">
+          <h1>Works</h1>
+          <p class="subtitle">制作作品一覧</p>
+        </div>
+
+        <div class="works-grid">
+          <!-- 作品3 -->
+          <div class="work-card" data-category="architecture">
+            <div class="work-image">
+              <img src="public/img03.png" alt="追大コミュニケーション" />
+            </div>
+            <div class="work-info">
+              <h3>追大コミュニケーション</h3>
+              <p>必要な階段</p>
+              <div class="work-details">
+                <span class="work-year">制作年: 2022年</span>
+                <span class="work-tech"
+                  >使用技術: Rhinoceros/AutoCad/Illustrator</span
+                >
+              </div>
+              <p class="work-description">
+                一見、階段ではないように見えるが、実は階段である。
+              </p>
+            </div>
+          </div>
+
+          <!-- 作品4 -->
+          <div class="work-card" data-category="architecture">
+            <div class="work-image">
+              <img src="public/img04.jpg" alt="七里ヶ浜の家" />
+            </div>
+            <div class="work-info">
+              <h3>七里ヶ浜の家</h3>
+              <p>教授のための家</p>
+              <div class="work-details">
+                <span class="work-year">制作年: 2023年</span>
+                <span class="work-tech"
+                  >使用技術: Rhinoceros/AutoCad/Illustrator</span
+                >
+              </div>
+              <p class="work-description">
+                海が見える立地を活かした住宅設計。プライバシーを確保しながらも、開放的な空間構成を実現しています。
+              </p>
+            </div>
+          </div>
+
+          <!-- 作品5 -->
+          <div class="work-card" data-category="architecture">
+            <div class="work-image">
+              <img src="public/img05.jpg" alt="七里ヶ浜の家" />
+            </div>
+            <div class="work-info">
+              <h3>七里ヶ浜の家</h3>
+              <p>教授のための家</p>
+              <div class="work-details">
+                <span class="work-year">制作年: 2023年</span>
+                <span class="work-tech"
+                  >使用技術: Rhinoceros/AutoCad/Illustrator</span
+                >
+              </div>
+              <p class="work-description">
+                海が見える立地を活かした住宅設計の別視点です。内部空間とテラスの繋がりを重視し、自然と一体になるような空間構成を目指しました。
+              </p>
+            </div>
+          </div>
+
+          <!-- 作品6 -->
+          <div class="work-card" data-category="design">
+            <div class="work-image">
+              <img src="public/img08.jpeg" alt="LPcats" />
+            </div>
+            <div class="work-info">
+              <h3>LPcats</h3>
+              <p>saasのキャラクターデザイン</p>
+              <div class="work-details">
+                <span class="work-year">制作年: 2023年</span>
+                <span class="work-tech">使用技術: Illustrator</span>
+              </div>
+              <p class="work-description">SaaS製品のキャラクターデザイン。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="back-to-home">
+          <a href="index.html" class="back-button"
+            ><i class="fas fa-arrow-left"></i> ホームに戻る</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- モーダル表示用のテンプレート -->
+    <div class="modal" id="workModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Egami Ryohei. All rights reserved.</p>
+    </footer>
+
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script src="src/works.js"></script>
+  </body>
+</html>
