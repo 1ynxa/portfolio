@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "calendar": "Calendrier des courses",
+    "roster": "Effectif",
+    "equipment": "Matériel"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Veloce Pro Cycling — Saison 2026",
+    "upcomingRaces": "Prochaines courses",
+    "recentActivity": "Activité récente",
+    "teamStats": "Stats équipe",
+    "stats": {
+      "riders": "Coureurs",
+      "staff": "Staff",
+      "racesThisMonth": "Courses ce mois",
+      "equipmentItems": "Matériels"
+    }
+  },
+  "calendar": {
+    "title": "Calendrier des courses",
+    "newRace": "Ajouter une course",
+    "listView": "Liste",
+    "gridView": "Grille",
+    "stages": "{count} étapes",
+    "singleDay": "1 jour",
+    "assigned": "{count} coureurs",
+    "noRaces": "Aucune course programmée"
+  },
+  "roster": {
+    "title": "Effectif",
+    "riders": "Coureurs",
+    "staff": "Staff",
+    "allRoles": "Tous les rôles",
+    "search": "Rechercher...",
+    "contract": "Contrat",
+    "license": "Licence UCI",
+    "passport": "Passeport",
+    "expires": "Expire",
+    "expiringSoon": "Expire bientôt",
+    "expired": "Expiré"
+  },
+  "equipment": {
+    "title": "Matériel",
+    "addItem": "Ajouter un article",
+    "allTypes": "Tous les types",
+    "search": "Rechercher...",
+    "assigned": "Attribué",
+    "unassigned": "Non attribué",
+    "condition": "État",
+    "lastService": "Dernier entretien",
+    "serialNumber": "N° de série"
+  },
+  "status": {
+    "confirmed": "Confirmé",
+    "tentative": "Provisoire",
+    "cancelled": "Annulé",
+    "active": "Actif",
+    "injured": "Blessé",
+    "suspended": "Suspendu",
+    "excellent": "Excellent",
+    "good": "Bon",
+    "needsService": "Entretien requis",
+    "retired": "Retraité"
+  },
+  "roles": {
+    "rider": "Coureur",
+    "ds": "Directeur Sportif",
+    "mechanic": "Mécanicien",
+    "doctor": "Médecin",
+    "soigneur": "Soigneur",
+    "coach": "Entraîneur",
+    "manager": "Manager"
+  },
+  "equipmentTypes": {
+    "road_bike": "Vélo de route",
+    "tt_bike": "Vélo de CLM",
+    "wheel": "Roues",
+    "component": "Composant",
+    "clothing": "Vêtements"
+  }
+}
