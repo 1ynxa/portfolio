@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "calendar": "Race Calendar",
+    "roster": "Team Roster",
+    "equipment": "Equipment"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Veloce Pro Cycling — 2026 Season",
+    "upcomingRaces": "Upcoming Races",
+    "recentActivity": "Recent Activity",
+    "teamStats": "Team Stats",
+    "stats": {
+      "riders": "Riders",
+      "staff": "Staff",
+      "racesThisMonth": "Races this month",
+      "equipmentItems": "Equipment items"
+    }
+  },
+  "calendar": {
+    "title": "Race Calendar",
+    "newRace": "Add Race",
+    "listView": "List",
+    "gridView": "Grid",
+    "stages": "{count} stages",
+    "singleDay": "1 day",
+    "assigned": "{count} riders",
+    "noRaces": "No races scheduled"
+  },
+  "roster": {
+    "title": "Team Roster",
+    "riders": "Riders",
+    "staff": "Staff",
+    "allRoles": "All roles",
+    "search": "Search members...",
+    "contract": "Contract",
+    "license": "UCI License",
+    "passport": "Passport",
+    "expires": "Expires",
+    "expiringSoon": "Expiring soon",
+    "expired": "Expired"
+  },
+  "equipment": {
+    "title": "Equipment",
+    "addItem": "Add Item",
+    "allTypes": "All types",
+    "search": "Search equipment...",
+    "assigned": "Assigned",
+    "unassigned": "Unassigned",
+    "condition": "Condition",
+    "lastService": "Last Service",
+    "serialNumber": "Serial No."
+  },
+  "status": {
+    "confirmed": "Confirmed",
+    "tentative": "Tentative",
+    "cancelled": "Cancelled",
+    "active": "Active",
+    "injured": "Injured",
+    "suspended": "Suspended",
+    "excellent": "Excellent",
+    "good": "Good",
+    "needsService": "Needs Service",
+    "retired": "Retired"
+  },
+  "roles": {
+    "rider": "Rider",
+    "ds": "Directeur Sportif",
+    "mechanic": "Mechanic",
+    "doctor": "Doctor",
+    "soigneur": "Soigneur",
+    "coach": "Coach",
+    "manager": "Manager"
+  },
+  "equipmentTypes": {
+    "road_bike": "Road Bike",
+    "tt_bike": "TT Bike",
+    "wheel": "Wheel Set",
+    "component": "Component",
+    "clothing": "Clothing"
+  }
+}
