@@ -1,8 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Sun, Moon, Globe } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+
+const LOCALE_LABELS: Record<string, string> = {
+  en: 'EN',
+  fr: 'FR',
+  ja: 'JA',
+};
 
 interface TopbarProps {
   title: string;
@@ -11,7 +18,16 @@ interface TopbarProps {
 
 export function Topbar({ title, locale }: TopbarProps) {
   const { theme, toggle } = useTheme();
-  const otherLocale = locale === 'en' ? 'fr' : 'en';
+  const pathname = usePathname();
+
+  // Replace current locale segment in path with new locale
+  const switchLocalePath = (newLocale: string) => {
+    const segments = pathname.split('/');
+    segments[1] = newLocale;
+    return segments.join('/');
+  };
+
+  const otherLocales = Object.keys(LOCALE_LABELS).filter(l => l !== locale);
 
   return (
     <header
@@ -26,15 +42,20 @@ export function Topbar({ title, locale }: TopbarProps) {
       </h1>
 
       <div className="flex items-center gap-2">
-        {/* Lang toggle */}
-        <Link
-          href={`/${otherLocale}/dashboard`}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
-          style={{ background: 'var(--card-bg)', color: 'var(--muted)', border: '1px solid var(--border)' }}
-        >
-          <Globe size={13} />
-          {otherLocale.toUpperCase()}
-        </Link>
+        {/* Lang switcher */}
+        <div className="flex items-center gap-1">
+          <Globe size={13} style={{ color: 'var(--muted)' }} />
+          {otherLocales.map(l => (
+            <Link
+              key={l}
+              href={switchLocalePath(l)}
+              className="px-2 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
+              style={{ background: 'var(--card-bg)', color: 'var(--muted)', border: '1px solid var(--border)' }}
+            >
+              {LOCALE_LABELS[l]}
+            </Link>
+          ))}
+        </div>
 
         {/* Theme toggle */}
         <button

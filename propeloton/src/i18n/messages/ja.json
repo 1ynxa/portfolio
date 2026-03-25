@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "calendar": "レースカレンダー",
+    "roster": "チームロースター",
+    "equipment": "機材管理"
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "subtitle": "Veloce Pro Cycling — 2026シーズン",
+    "upcomingRaces": "直近のレース",
+    "recentActivity": "最近のアクティビティ",
+    "teamStats": "チーム統計",
+    "stats": {
+      "riders": "選手",
+      "staff": "スタッフ",
+      "racesThisMonth": "今月のレース",
+      "equipmentItems": "機材数"
+    }
+  },
+  "calendar": {
+    "title": "レースカレンダー",
+    "newRace": "レースを追加",
+    "listView": "リスト",
+    "gridView": "グリッド",
+    "stages": "{count}ステージ",
+    "singleDay": "1日",
+    "assigned": "{count}名選手",
+    "noRaces": "レースの予定はありません"
+  },
+  "roster": {
+    "title": "チームロースター",
+    "riders": "選手",
+    "staff": "スタッフ",
+    "allRoles": "全ての役割",
+    "search": "メンバーを検索...",
+    "contract": "契約",
+    "license": "UCIライセンス",
+    "passport": "パスポート",
+    "expires": "有効期限",
+    "expiringSoon": "まもなく期限切れ",
+    "expired": "期限切れ"
+  },
+  "equipment": {
+    "title": "機材管理",
+    "addItem": "機材を追加",
+    "allTypes": "全種類",
+    "search": "機材を検索...",
+    "assigned": "割当済み",
+    "unassigned": "未割当",
+    "condition": "状態",
+    "lastService": "最終整備日",
+    "serialNumber": "シリアルNo."
+  },
+  "status": {
+    "confirmed": "確定",
+    "tentative": "暫定",
+    "cancelled": "中止",
+    "active": "アクティブ",
+    "injured": "負傷中",
+    "suspended": "出場停止",
+    "excellent": "優良",
+    "good": "良好",
+    "needsService": "整備必要",
+    "retired": "引退"
+  },
+  "roles": {
+    "rider": "選手",
+    "ds": "監督",
+    "mechanic": "メカニック",
+    "doctor": "ドクター",
+    "soigneur": "ソワニュール",
+    "coach": "コーチ",
+    "manager": "マネージャー"
+  },
+  "equipmentTypes": {
+    "road_bike": "ロードバイク",
+    "tt_bike": "TTバイク",
+    "wheel": "ホイールセット",
+    "component": "コンポーネント",
+    "clothing": "ウェア"
+  }
+}
